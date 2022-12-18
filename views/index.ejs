@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Share Your Room!</title>
+		<link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+		<script src="/js/web3interface.js"></script>
+	</head>
+	<body>
+		<br><br><br>
+
+		<div id="main">
+			<div class="inner">
+				<div class="row gtr-200">
+					<div class="col-6">
+						<h2>Identity </h2>
+						<h4>Key  :  <a id="address"><%= address %></a></h4>
+						<h4>Ether  :  <a id="balanceAmount"></a></h4> 
+            <input type="button" id="logIn" value="logIn!" class="primary"/>
+            <br>
+            <br>
+            <br>
+            <!-- 아래 부분은 선택적으로 구현합니다. -->
+            <!-- <input type="text" name="roomId" id="roomId" value="" placeholder="roomId" style="width:50%;margin-bottom: 0.3em;"/> -->
+            <!-- <input type="button" id="InActive" value="InActive" class="primary" style="background-color: skyblue;"/> -->
+            <!-- <input type="button" id="ClearAll" value="ClearAll" class="primary" style="background-color: royalblue;"/> -->
+
+            <input type="text" name="roomId" id="roomId" value="" placeholder="roomId" style="width:50%;margin-bottom: 0.3em;"/>
+            <input type="button" id="InActive" value="InActive" class="primary" style="background-color: skyblue;"/>
+            <input type="button" id="ClearAll" value="ClearAll" class="primary" style="background-color: royalblue;"/>
+
+					</div>
+					<div class="col-6">
+            <h2>My Rents</h2>
+						<div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+										<th>RentNumber</th>
+										<th>RoomId</th>
+										<th>CheckInDate</th>
+										<th>CheckOutDate</th>
+                  </tr>
+                </thead>
+                <tbody id="myRents">
+                </tbody>
+              </table>
+            </div>
+          </div>
+				</div>
+
+				<hr class="major">
+
+				<div class="row gtr-200">
+					<div class ="col-6 col-12-medium">
+						<h2>Share Room</h2>
+						<form method="POST" name="shareRoom" action="#">
+							<div class="row gtr-uniform">
+								<div class="col-6 col-12-xsmall">
+									<h4>name</h4>
+									<input type="text" name="name" id="name" value="" placeholder="name" />
+                  <br>
+									<h4>location</h4>
+									<input type="text" name="location" id="location" value="" placeholder="location ..." />
+                  <br>
+									<h4>price</h4>
+									<input type="text" name="price" id="price" value="" placeholder="milliEther (mEth) == 1,600 KRW" />
+                  <sub style="float:right; margin-bottom: 10px;" id="mEth2krw"></sub>
+                  <br>
+								</div>
+							</div>
+
+							<div class="col-12">
+								<ul class="actions">
+									<li><button type="button" id="shareRoom" class="primary"/>Share!</li>
+									<li><input type="reset" value="reset" /></li>
+								</ul>
+							</div>
+						</form>
+					</div>
+
+          <div class ="col-6 col-12-medium">
+						<h3>All Rooms</h3>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+										<th>RoomId</th>
+										<th>Name</th>
+										<th>Location</th>
+										<th>IsActive?</th>
+										<th>Price</th>
+										<th>Owner</th>
+									</tr>
+								</thead>
+								<tbody id="allRooms">
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class ="col-6 col-12-medium">
+						<h2>Rent Room</h2>
+						<form>
+							<div class="row gtr-uniform">
+								<div class="col-12">
+									<select name="rooms-select" id="rooms-select">
+									</select>
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<h4>checkInDate : </h4>
+									<input type="text" name="checkInDate" id="checkInDate" value="" placeholder="YYYY-MM-DD" />
+								</div>
+                <div class="col-6 col-12-xsmall">
+									<h4>checkOutDate : </h4>
+									<input type="text" name="checkOutDate" id="checkOutDate" value="" placeholder="YYYY-MM-DD" />
+                  <sub style="float:right; margin-bottom: 10px;" id="totalfee"></sub>
+								</div>
+								<div class="col-12">
+									<ul class="actions">
+										<li><input type="button" id="rentRoom" value="Rent!" class="primary"/></li>
+										<li><input type="reset" value="reset" /></li>
+									</ul>
+								</div>
+							</div>
+						</form>
+					</div>
+          
+					<div class ="col-6 col-12-medium">
+            <h3>Room History</h3>
+						<div class="table-wrapper">
+							<table>
+								<thead>
+									<tr>
+                    <th>RentNumber</th>
+										<th>CheckInDate</th>
+										<th>CheckOutDate</th>
+										<th>Renter</th>
+									</tr>
+								</thead>
+								<tbody id="roomHistory">
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<hr class="major">
+
+				<div class="row gtr-200">
+					<div class ="col-6 col-12-medium"></div>
+					<div class ="col-6 col-12-medium"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
